@@ -1,0 +1,12 @@
+/*公共样式*/
+body,h1,h2,h3,h4,h5,h6,p,pre,hr,ol,ul,dl,dd,li{
+	margin:0;
+	padding:0;
+}
+ul,ol{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	color:black;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div>
+  用户名：<input type="text" placeholder="用户名" id="uname"><br>
+  密码：<input type="password" placeholder="密码" id="upwd"><br>
+  手机：<input type="text" placeholder="手机号" id="uhone"><br>
+  邮箱：<input type="text" placeholder="邮箱" id="uemail"><br>
+  <button onclick="reg()">注册</button>
+</div> 
+<script>
+ function reg(){
+   var u=uname.value;
+   var p=upwd.value;
+   var h=uhone.value;
+   var m=uemail.value;
+   var tab1=/^[a-z0-9_]{3,12}$/i;
+   var tab2=/^1[3-8][0-9]{9}$/;
+   var tab3=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+   if(!tab1.test(u)){
+     alert("用户名格式不正确");
+     return;
+   }
+   if(!tab1.test(p)){
+     alert("密码格式不正确");
+     return;
+   }
+   if(!tab2.test(h)){
+     alert("手机号格式不正确");
+     return;
+   }
+   if(!tab3.test(m)){
+     alert("邮箱格式不正确");
+     return;
+   }
+   //使用ajax连接数据库
+   var xhr=new XMLHttpRequest();
+   xhr.onreadystatechange=function(){
+     if(xhr.readyState==4&&xhr.status==200){
+       var result=xhr.responseText;
+       alert(result);
+     }
+   }
+   var url="http://127.0.0.1:8080/user/reg?uname="+u+"&upwd="+p+"&uhone="+h+"&uemail="+m;
+   xhr.open("get",url,true);
+    
+   xhr.send();
+  
+ }
+</script> 
+</body>
+</html>

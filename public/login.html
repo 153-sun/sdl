@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+	<link rel="stylesheet" href="css/commen.css">
+	<link rel="stylesheet" href="css/login.css"> 
+ </head>
+ <body>
+  <div class="toubu">
+	  <div class="denglu-1">
+      <a href=""><img src="image/login/02.png" alt="" class="img02"></a> 
+      <h3 class="huanying">欢迎登录</h3>
+			<ul class="right-icon">
+				<li>
+				  <span class="zheng-1"></span>
+					正品保障
+				</li>
+				<li>
+				  <span class="gong-2"></span>
+					厂家直供
+				</li>
+				<li>
+				  <span class="tui-3"></span>
+					退换无忧
+				</li>
+				<li>
+				  <span class="shou-4"></span>
+					售后保障
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="denglu-2">
+	  <a href=""><img src="image/login/1534325172725301337.png" alt="" class="icon-3"></a>
+	  <div class="denglu-x">
+		 <a href="" class="zhang-h">账号登录</a>
+		 <a href="" class="kuai-h">快捷登录</a>
+		 <input type="text" placeholder="手机号/用户名" class="shou-x" id="uname">
+		 <input type="password" placeholder="密码" class="mima-x" id="upwd">
+		 <input type="checkbox"><p class="fu-1">请勿在公用电脑上勾选此项</p>
+		 <button class="yan-1">
+        <p class="yan-2"></p>
+		 </button>
+		 <a href="" class="fu-2">忘记密码？</a>
+     <button class="denglu-l" onclick="login()">登录</button>
+		 <p class="mima-2"></p>
+     <p class="shou-2"></p>
+		 <a href="" class="wei-xin2"><span class="wei-xin"></span>微信</a>
+     <a href="" class="qq-q wei-xin2"><span class="qq wei-xin"></span>QQ</a>
+		 <a href="" class="liji">立即注册></a>
+		</div>   
+	</div>
+	<div class="dibu">
+	  <div class="dibu-1">
+		 <ul class="dibu-2">
+		 	<li><a href="">关于四代</a></li>
+		 	<li><a href="">联系我们</a></li>
+		 	<li><a href="">三平创富</a></li>
+		 	<li><a href="">三益宝</a></li>
+		 	<li><a href="">三易贷</a></li>
+		 	<li><a href="">乐分享</a></li>
+		 	<li><a href="">职位招聘</a></li>
+		 	<li><a href="">网站地图</a></li>
+		 	<li><a href="">友链申请</a></li>
+		 </ul>
+		 <ul class="dibu-icon">
+		 	<li><a href=""><img src="image/login/web-safe1.png" alt=""></a></li>
+		 	<li><a href=""><img src="image/login/web-safe2.png" alt=""></a></li>
+		 	<li><a href=""><img src="image/login/web-safe3.png" alt=""></a></li>
+		 	<li><a href=""><img src="image/login/web-safe4.png" alt=""></a></li>
+		 </ul>
+		</div>
+	</div>
+  <div class="huang-kuai"></div>
+  <script>
+    function login(){
+			//接收数据
+			var u_name=uname.value;
+			var u_pwd=upwd.value;
+		//创建异步对象，ajax异步连接服务器
+		var xhr=new XMLHttpRequest();
+	//创建监听，获取响应数据
+    xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				var result=xhr.responseText;
+				alert(result);
+			}
+		}
+		//打开链接，创建请求
+		var url="http://127.0.0.1:8080/index/login";
+		xhr.open("post",url,true);
+	//发送请求
+	//post的参数是通过请求主体发送 
+	var formdata="uname="+u_name+"&upwd="+u_pwd;
+	//由于ajax默认传输是text/plain
+	//无法传递特殊符号，武们需要更改消息头
+	//让ajax请求可以传递特殊符号
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xhr.send(formdata);
+		}
+  </script>
+ </body>
+ </html>
